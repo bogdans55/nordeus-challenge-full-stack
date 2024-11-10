@@ -1,6 +1,8 @@
 import pygame
-import sys
-from src.game import Game
+from src.screen_manager import ScreenManager
+from src.screens.start_screen import StartScreen
+from src.screens.game_screen import GameScreen
+from src.screens.end_screen import EndScreen
 
 pygame.init()
 
@@ -9,28 +11,36 @@ SCREEN_HEIGHT = 600
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Elevation Quest')
 
-game = Game(screen)
+screen_manager = ScreenManager()
+start_screen = StartScreen(screen_manager, screen)
+game_screen = GameScreen(screen_manager, screen)
+end_screen = EndScreen(screen_manager, screen)
+
+screen_manager.start_screen = start_screen
+screen_manager.game_screen = game_screen
+screen_manager.end_screen = end_screen
+
+screen_manager.set_screen(start_screen)
 
 def main():
     clock = pygame.time.Clock()
     running = True
 
     while running:
+        time_delta = clock.tick(30) / 1000.0
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            else:
-                game.handle_event(event)
+            screen_manager.handle_event(event)
 
-        game.update()
-
-        game.draw()
+        screen_manager.update(time_delta)
+        screen_manager.draw(screen)
         pygame.display.flip()
 
         clock.tick(30)
 
     pygame.quit()
-    sys.exit()
 
 if __name__ == "__main__":
     main()

@@ -35,7 +35,7 @@ class Grid:
                     grid[row][col] = random.randint(1, 1000)
         return grid
     
-    def draw(self):
+    def draw(self, incorrect_guesses=None):
         """Draws the grid on the screen with colors based on cell heights."""
         for row in range(self.rows):
             for col in range(self.cols):
@@ -46,6 +46,14 @@ class Grid:
                     color,
                     pygame.Rect(col * self.cell_size, row * self.cell_size, self.cell_size, self.cell_size)
                 )
+                
+                for island in incorrect_guesses:
+                    if (row, col) in island:
+                        red_tint = pygame.Surface((self.cell_size, self.cell_size), pygame.SRCALPHA)
+                        red_tint.fill((255, 0, 0, 100))
+                        self.screen.blit(red_tint, (col * self.cell_size, row * self.cell_size))
+
+
     
     def get_color_for_height(self, height):
         """Returns a color based on height. Water (0) is blue; land varies by height."""
