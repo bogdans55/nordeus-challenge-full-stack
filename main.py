@@ -2,6 +2,7 @@ import pygame
 from src.screen_manager import ScreenManager
 from src.screens.start_screen import StartScreen
 from src.screens.game_screen import GameScreen
+from src.screens.tutorial_screen import TutorialScreen
 from src.screens.end_screen import EndScreen
 
 pygame.init()
@@ -14,10 +15,12 @@ pygame.display.set_caption('Elevation Quest')
 screen_manager = ScreenManager()
 start_screen = StartScreen(screen_manager, screen)
 game_screen = GameScreen(screen_manager, screen)
+tutorial_screen = TutorialScreen(screen_manager, screen)
 end_screen = EndScreen(screen_manager, screen)
 
 screen_manager.start_screen = start_screen
 screen_manager.game_screen = game_screen
+screen_manager.tutorial_screen = tutorial_screen
 screen_manager.end_screen = end_screen
 
 screen_manager.set_screen(start_screen)

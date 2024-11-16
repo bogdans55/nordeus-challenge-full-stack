@@ -6,12 +6,10 @@ class EndScreen(Screen):
     def __init__(self, screen_manager, screen):
         self.screen = screen
         self.screen_manager = screen_manager
-        self.manager = pygame_gui.UIManager((self.screen.get_width(), self.screen.get_height()))
+        self.manager = pygame_gui.UIManager((self.screen.get_width(), self.screen.get_height()), "assets/theme.json")
         self.game_won = False
       
-        # self.background_image = pygame.transform.scale(
-        #     self.background_image, (self.screen.get_width(), self.screen.get_height())
-        # )
+        # self.background_image = pygame.transform.scale(self.background_image, (self.screen.get_width(), self.screen.get_height()))
 
         self.setup_ui()
 
@@ -19,13 +17,13 @@ class EndScreen(Screen):
         """Creates buttons for the end screen."""
         self.restart_button = pygame_gui.elements.UIButton(
             relative_rect=pygame.Rect((80, 490), (200, 50)),
-            text="Return to Start Screen",
+            text="PLAY AGAIN",
             manager=self.manager
         )
         
         self.quit_button = pygame_gui.elements.UIButton(
             relative_rect=pygame.Rect((320, 490), (200, 50)),
-            text="Quit",
+            text="QUIT",
             manager=self.manager
         )
 

@@ -8,9 +8,11 @@ class GameScreen(Screen):
         self.game = Game(screen)
 
     def handle_event(self, event):
+        """Handles events for the game screen."""
         self.game.handle_event(event)
 
     def update(self, time_delta):
+        """Updates the game each frame."""
         self.game.update(time_delta)
         if self.game.game_over:
             self.screen_manager.end_screen.game_won = self.game.won
@@ -18,4 +20,5 @@ class GameScreen(Screen):
             self.game = Game(self.game.screen)
 
     def draw(self, screen):
+        """Draws the game screen."""
         self.game.draw()

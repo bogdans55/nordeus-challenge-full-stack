@@ -8,6 +8,7 @@ class Grid:
         self.rows = rows
         self.cols = cols
         self.cell_size = cell_size
+        # self.grid = self.generate_random_grid()
         self.grid = self.load_grid()
 
     def load_grid(self):
@@ -59,15 +60,19 @@ class Grid:
         """Returns a color based on height. Water (0) is blue; land varies by height."""
         if height == 0:
             return (0, 100, 255)
+        if height == 1000:
+            return (255, 255, 255)
         else:
             if height < 400:
-                return (0, int(255 * (height / 400)), 0)
+                return (30 , 150 + int(height / 5), 60)
+            elif height < 600:
+                return (height - 350, 230, 60)
             elif height < 700:
-                return (int(255 * ((height - 400) / 300)), 255, 0)
+                return (150 + (700 - height), 130 + (700 - height), 20)
             elif height < 900:
-                return (109, int(69 + (186 * ((height - 700) / 200))), 19)
+                return (95 + int((900 - height) / 4), 75 + int((900 - height) / 4), 20)
             else:
-                return (int(255 - (1000 - height) / 5), int(255 - (1000 - height) / 5), int(255 - (1000 - height) / 5))
+                return (95 + int(1.5 * (height - 900)), 75 + int(1.7 * (height - 900)), 20 + int(2 * (height - 900)))
 
     def get_island(self, x, y):
         """Gets the island based on a cell click at (x, y). Returns the list of cells that make up the island."""

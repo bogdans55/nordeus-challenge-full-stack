@@ -13,6 +13,7 @@ class Game:
         self.incorrect_guesses = []
 
     def handle_event(self, event):
+        """Handles the user's input by clicking on the screen."""
         if event.type == pygame.MOUSEBUTTONDOWN and not self.game_over:
             mouse_x, mouse_y = event.pos
             self.process_guess(mouse_x, mouse_y)
@@ -35,10 +36,12 @@ class Game:
         pass
 
     def draw(self):
+        """Draws the game screen."""
         self.grid.draw(self.incorrect_guesses)
         self.display_info()
 
     def display_info(self):
+        """Displays the number of guesses left."""
         font = pygame.font.Font(None, 36)
         text = font.render(f"Guesses left: {self.guesses_left}", True, (0, 0, 0))
         self.screen.blit(text, (10, 10))

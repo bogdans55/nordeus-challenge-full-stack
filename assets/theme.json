@@ -1,0 +1,32 @@
+{
+    "button": {
+        "font": {
+            "name": "arial",
+            "size": 36
+        },
+        "colours": {
+            "normal_bg": "rgba(5, 75, 110, 150)",
+            "hovered_bg": "rgba(5, 75, 110, 185)",
+            "active_bg": "rgba(5, 75, 110, 220)",
+            "normal_border": "#054b6e",
+            "hovered_border": "#054b6e",
+            "active_border": "#054b6e",
+            "normal_text": "#FFFFFF",
+            "hovered_text": "#FFFFFF",
+            "active_text": "#FFFFFF"
+        },
+        "border_width": 3,
+        "shape": "rectangle"
+    },
+    "text_box": {
+        "font": {
+            "name": "roboto",
+            "size": 12
+        },
+        "colours": {
+            "dark_bg": "rgba(5, 75, 110, 220)",
+            "normal_border": "#ADD8E6",
+            "normal_text": "#FFFFFF"
+        }
+    }
+}
