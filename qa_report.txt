@@ -1,0 +1,58 @@
+QA Report:
+
+1. Bugs
+
+- Font not loading properly
+    Noticed that when custom font is used, it is not loading properly. Instead some other default font with default setting is being used.
+    Fix: I wasn't able to fix this issue. Instead, I just used one of the fonts that is available in pygame.
+- Incorrect cell highlighting on wrong guess
+    Noticed that when a wrong island is clicked, only the cell that was clicked was highlighted in red.
+    Fix: Added list 'incorrect_guesses' in Game class that will store all cells that belong to islands that were wrongly guessed.
+- Wrong island can be selected multiple times
+    Noticed that if the user is to select a wrong island for the second time, that island will be once again highlighted.
+    Fix: I actually decided to keep this bug as a feature :). The wrong guess is already highlighted in red, so the user can see that they have already guessed that island wrong. If they decide to go again for the same island, it should count as a new guess.
+    Note: With the game only having 3 guesses, this bug is not a big issue, as the island isn't colored in full red even after second highlighting. But if we were to increase the number of guesses, this bug could be a problem and should be fixed. The fix would be to just not count clicks on the already guessed islands as a guess but treat them the same way as we treat water now.
+
+2. Testing
+
+- Input Testing
+    Test the boundary clicks, like the edges of the map and the corners.
+    Click on the water and make sure that it's not counted towards a guess.
+    Click on the same island multiple times and make sure that it's always counted the same (always wrong).
+    Test all the islands on the map and make sure that only one is the correct guess.
+- Gameplay Testing
+    Use up all guesses to verify end screen transitions (win/loss).
+    Attempt to select the correct island on the first try to test immediate victory conditions. (also test for the second and the last try)
+    Test the game buttons to make sure they work properly.
+
+3. Additional Potential Features
+
+- More levels
+    Add more levels with different maps and different number of islands.
+- Timer
+    Add a timer that will count down from a certain time and if the user doesn't guess the island in time, they lose.
+- Improvements to the UI and Design
+    Add more animations and transitions to the game to make it more visually appealing.
+- Progression System
+    Add a progression system where the user can unlock new and harder levels by completing the previous ones.
+- Localization
+    Add localization support for different languages so that the game can be played by people from all over the world.
+- Scoring System
+    Add a scoring system that will give the user points based on how quickly they guess the correct island.
+    Create leaderboards where the user can see how they rank against other players.
+- Customization
+    Add customization options where the user can change the colors, fonts, and other settings of the game.
+- Map generation
+    Create a better map generation for the cases that API fails to load the map.
+- Tutorial
+    Add a better tutorial for new players.
+    Explain the coloring of the island that is based on the topography.
+
+4. Factors to Consider
+
+- Window resizing
+    The game should be updated to handle window resizing and adjust the map and UI accordingly.
+- Larger Maps
+    The game should be updated to handle larger maps with more cells.
+- API failure
+    If the API fails to load the map, the game will generate a random height for every cell, and the map look can be confusing.
