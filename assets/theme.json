@@ -2,7 +2,7 @@
     "button": {
         "font": {
             "name": "arial",
-            "size": 36
+            "size": 24
         },
         "colours": {
             "normal_bg": "rgba(5, 75, 110, 150)",
